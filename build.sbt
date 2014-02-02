@@ -1,6 +1,7 @@
 scalaJSSettings
 
 name := "Football teh game"
+
 version := "0.1-SNAPSHOT"
 
 libraryDependencies ++= Seq(

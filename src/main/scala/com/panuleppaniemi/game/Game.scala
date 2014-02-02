@@ -8,18 +8,16 @@ import com.panuleppaniemi.game._
 
 object Game {
   def main(): Unit = {
-    val teams = (
-        new Team("FC Luscelona", createPlayers("FCL")),
-        new Team("Real Mardi", createPlayers("RLM"))
+    val field = new Field(
+      new Team("FC Luscelona", createPlayers("FCL")),
+      new Team("Real Mardi", createPlayers("RLM"))
     )
 
-    var field = new Field(teams)
+    println(field)
 
-    println(teams)
-
-    val paragraph = g.document.createElement("p")
-    paragraph.innerHTML = "<strong>It works!</strong>"
-    g.document.getElementById("playground").appendChild(paragraph)
+    val content = g.document.createElement("p")
+    content.innerHTML = println(field)
+    g.document.getElementById("playground").appendChild(content)
   }
 
   private def createPlayers = (name: String) => (1 to 6).map((x: Int) => new Player(name + " " + x)).toList
