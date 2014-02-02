@@ -1,8 +1,6 @@
-// Turn this project into a Scala.js project by importing these settings
 scalaJSSettings
 
-name := "Football the game"
-
+name := "Football teh game"
 version := "0.1-SNAPSHOT"
 
 libraryDependencies ++= Seq(
