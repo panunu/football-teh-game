@@ -1,6 +1,6 @@
 package com.panuleppaniemi.team
 
-class Player() {
+class Player(val name: String) {
 
   /**
    * Could have following attributes/skills:

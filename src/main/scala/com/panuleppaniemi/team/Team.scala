@@ -1,5 +1,9 @@
 package com.panuleppaniemi.team
 
-class Team() {
-  
+class Team(val name: String, val players: List[Player]) {
+
+  /**
+   * Any other attributes?
+   */
+
 }
