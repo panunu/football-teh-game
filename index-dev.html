@@ -3,20 +3,24 @@
 <head>
   <title>Football teh game</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style>
+        body { font-family: Helvetica; font-weight: bold; }
+        table { border: 1px solid green; border: 0; border-spacing: 0; background-color: #bbffbb; margin: 0 auto; }
+
+        td { width: 30px; height: 30px; background-color: lime; border: 1px solid rgba(50, 100, 50, 0.1); }
+
+        td:nth-child(12) { border-right: 4px solid white; }
+        td .player[data-team="1"] { background-color: white; color: black; }
+        td .player[data-team="2"] { background-color: red; color: white; }
+        /*td:nth-child(2n) { background-color: green; }*/
+
+        .player { border-radius: 18px; width: 30px; height: 30px; text-align: center; vertical-align: middle; line-height: 30px; cursor: default; font-size: 11px; }
+    </style>
 </head>
 <body>
 
 <div id="playground"></div>
-
-<style>
-    table { border: 1px solid green; border: 0; border-spacing: 1px; background-color: #bbffbb; margin: 0 auto; }
-
-    td { width: 45px; height: 45px; background-color: lime; border: 0; }
-
-    tr:nth-child(6) td { border-bottom: 2px solid white; }
-
-    .player { background-color: white; border-radius: 18px; width: 35px; height: 35px; text-align: center; vertical-align: middle; line-height: 35px; margin-left: 5px; cursor: default; font-size: 11px; }
-</style>
 
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="./target/scala-2.10/football-teh-game-extdeps.js"></script>

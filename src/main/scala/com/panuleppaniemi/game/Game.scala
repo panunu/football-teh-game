@@ -9,20 +9,17 @@ import com.panuleppaniemi.game._
 
 object Game {
   def main(): Unit = {
-
-
     val field = new Field(
-      new Team("FC Luscelona", createPlayers("L")),
-      new Team("Real Mardi", createPlayers("R"))
+      new Team(1, "FC Luscelona", createPlayers("L")),
+      new Team(2, "Real Mardi", createPlayers("R"))
     )
 
     jQuery("#playground").html(field.toString)
 
-
-    /*val name = jQuery("#helloworld-jquery-input-name").`val`()
-  val paragraph = jQuery("<p>").html("Hello " + name + "!")
-  jQuery("#helloworld-jquery-input").append(paragraph)*/
+    jQuery(".player").click { (e: JQueryEventObject) =>
+      jQuery(e.target).addClass("active")
+    }
   }
 
-  private def createPlayers = (name: String) => (1 to 6).map((x: Int) => new Player(name + " " + x)).toList
+  private def createPlayers = (name: String) => (1 to 6).map((x: Int) => new Player(x, name + " " + x)).toList
 }

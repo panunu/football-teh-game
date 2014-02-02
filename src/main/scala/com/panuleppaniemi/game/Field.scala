@@ -3,41 +3,45 @@ package com.panuleppaniemi.game
 import com.panuleppaniemi.team._
 
 class Field(val teams: (Team, Team)) {
-  val bounds = (9, 12)
+  val bounds = (15, 24) // Width, length
+
   var players =
-    plotPlayers(teams._1.players.take(3), 3, 3) :::
-    plotPlayers(teams._1.players.drop(3), 3, 5) :::
-    plotPlayers(teams._2.players.take(3), 3, 10) :::
-    plotPlayers(teams._2.players.drop(3), 3, 8)
+    plotPlayers(teams._1.players.take(3), 5, 6) :::
+    plotPlayers(teams._1.players.drop(3), 5, 10) :::
+    plotPlayers(teams._2.players.take(3), 5, 24 - 9) :::
+    plotPlayers(teams._2.players.drop(3), 5, 24 - 5)
 
   def plotPlayers = (players: List[Player], x: Int, y: Int) => {
     players.zipWithIndex.map {
-      case (p: Player, index: Int) => new Plottable(p, new Coordinates(x + (index * 2), y))
+      case (p: Player, index: Int) => new Plottable(p, new Coordinates(x + (index * 3), y))
     }
   }
 
   override def toString = {
-    var html: String = "<table>"
+    var html = ""
 
-    for (y <- 1 to bounds._2) {
+    for (x <- 1 to bounds._1) {
       html += "<tr>"
 
-      for (x <- 1 to bounds._1) {
-        html += "<td>"
-
-        val inThisPosition = players.filter((p: Plottable) => p.coordinates.y == y && p.coordinates.x == x)
-        if (inThisPosition.size == 1) {
-          val player = inThisPosition.head.player
-          html += ("<div class=\"player\" data-team=\"%s\">%s</div>").format(player.team.name, player.name)
-        }
-
-        html += "</td>"
+      for (y <- 1 to bounds._2) {
+        html += "<td>%s</td>".format(getPlayer(x, y).getOrElse(""))
       }
 
       html += "</tr>"
     }
 
-    html += "</table>"
+    html = "<table>%s</table>".format(html)
     html
+  }
+
+  private def getPlayer(x: Int, y: Int): Option[String] = {
+    val inThisPosition = players.filter((p: Plottable) => p.coordinates.y == y && p.coordinates.x == x)
+
+    if (inThisPosition.size == 0) {
+      return None
+    }
+
+    val player = inThisPosition.head.player
+    Some("<div class=\"player\" data-team=\"%s\" data-player=\"%s\">%s</div>".format(player.team.id, player.id, player.name))
   }
 }

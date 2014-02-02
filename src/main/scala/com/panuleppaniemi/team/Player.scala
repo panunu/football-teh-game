@@ -1,6 +1,6 @@
 package com.panuleppaniemi.team
 
-class Player(val name: String) {
+class Player(val id: Int, val name: String) {
   var team: Team = null
 
   def assignTo = (team: Team) => this.team = team
