@@ -19,6 +19,10 @@ object Game {
     jQuery(".player").click { (e: JQueryEventObject) =>
       jQuery(e.target).addClass("active")
     }
+
+    jQuery("td").mouseup { (e: JQueryEventObject) =>
+      jQuery(".player.active").appendTo(e.target).removeClass("active") //.removeClass("active")
+    }
   }
 
   private def createPlayers = (name: String) => (1 to 6).map((x: Int) => new Player(x, name + " " + x)).toList
